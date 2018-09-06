@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+
+  constructor(private _router: Router) {
+  }
+
+  openProjects() {
+    this._router.navigate(['/Projects']);
+  }
 }

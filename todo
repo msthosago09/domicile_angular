@@ -1,0 +1,16 @@
+Create php for:
+    - read db for project information
+    - contact us page
+    - add project to db/ upload pictures, documents and links
+    - add comments to project
+
+Galleries should be scrollable
+
+*index.php file is read first by xampp
+
+Pages:
+     Home; About; Projects;Services;Contact
+
+{"ID":"12575","TITLE":"My First Project","DESCRIPTION":"This is the description for my first project."},
+{"ID":"12902","TITLE":"Second Project","DESCRIPTION":"This is the second project. Just a test"},
+{"ID":"23758","TITLE":"Third Project","DESCRIPTION":"This is the second project. Just a test"}]
