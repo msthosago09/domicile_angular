@@ -10,6 +10,8 @@ import {ContactComponent} from '../pages/contact-us/contact.component';
 import {ServicesComponent} from '../pages/services/services.component';
 import {ContactModule} from '../pages/contact-us/contact.module';
 import {ServicesModule} from '../pages/services/services.module';
+import {HttpClientModule} from '@angular/common/http';
+import {DbService} from '../providers/db.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import {ServicesModule} from '../pages/services/services.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ProjectsModule,
     HomeModule,
     ContactModule,
@@ -41,7 +44,7 @@ import {ServicesModule} from '../pages/services/services.module';
       }
     ])
   ],
-  providers: [],
+  providers: [DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
