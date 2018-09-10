@@ -16,7 +16,6 @@ $sql = "SELECT * FROM project_objects";
 $result = $conn->query($sql);
 $counter = 0;
 if ($result->num_rows > 0) {
-    // output data of each row
     while($row = $result->fetch_assoc()) {
         $resultArray[$counter] = $row;
         $counter++;

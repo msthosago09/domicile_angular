@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {DbService} from '../../providers/db.service';
 import {Subscription} from 'rxjs';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-projects',

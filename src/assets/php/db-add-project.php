@@ -1,8 +1,28 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: mahob
- * Date: 06/09/2018
- * Time: 09:26
- */
+$servername = "domicilegroup.co.za";
+$username = "domicile_admin";
+$password = "Mahobala";
+$dbname = "domicile_maindb";
+$port = 3306;
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$id = $_POST["id"];
+$projTitle = $_POST["projTitle"];
+$projDesc = $_POST["projDesc"];
+
+$sql = "INSERT INTO project_objects (ID, TITLE, DESCRIPTION) VALUES ('$id', '$projTitle', '$projDesc')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Success";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>

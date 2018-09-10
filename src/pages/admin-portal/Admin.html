@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Admin</h1>
+  <div class="container">
+    <h2>Add Project</h2>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input [(ngModel)]="projectTitle" type="text" class="form-control" id="title" name="title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input [(ngModel)]="projectDescription" type="text" class="form-control" id="description" name="description" required>
+      </div>
+      <button type="button" (click)="submitProject()" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

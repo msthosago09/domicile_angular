@@ -12,6 +12,9 @@ import {ContactModule} from '../pages/contact-us/contact.module';
 import {ServicesModule} from '../pages/services/services.module';
 import {HttpClientModule} from '@angular/common/http';
 import {DbService} from '../providers/db.service';
+import {AdminComponent} from '../pages/admin-portal/admin.component';
+import {AdminModule} from '../pages/admin-portal/Admin.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,10 +23,13 @@ import {DbService} from '../providers/db.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     ProjectsModule,
     HomeModule,
     ContactModule,
     ServicesModule,
+    AdminModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
@@ -41,6 +47,10 @@ import {DbService} from '../providers/db.service';
       {
         path: 'services',
         component: ServicesComponent
+      },
+      {
+        path: 'admin',
+        component: AdminComponent
       }
     ])
   ],
