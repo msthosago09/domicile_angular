@@ -1,28 +1,28 @@
 <?php
 // connect and login to FTP server
-/*$ftp_server = "ftp.domicilegroup.co.za";
-$ftp_username = "imageRepo";
+$ftp_server = "ftp.domicilegroup.co.za";
+$ftp_username = "imageRepo@domicilegroup.co.za";
 $ftp_userpass = "Mahobala";
 $ftp_conn = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");
+print_r($_FILES);
 $login = ftp_login($ftp_conn, $ftp_username, $ftp_userpass);
+ftp_pasv($ftp_conn,true);
+$fileName = $_FILES["photos"]["name"];
+$filePath = $_FILES["photos"]["tmp_name"];
 
-$file = "localfile.txt";
+echo "name " . $fileName;
+echo "path " . $filePath;
 
-// upload file
-if (ftp_put($ftp_conn, "serverfile.txt", $file, FTP_ASCII))
+if (ftp_put($ftp_conn, "ftp_files/".$fileName, $filePath, FTP_ASCII))
 {
-  echo "Successfully uploaded $file.";
+  echo "Successfully uploaded";
 }
 else
 {
-  echo "Error uploading $file.";
+  echo "Error uploading";
 }
 
-// close connection
-ftp_close($ftp_conn);*/
+ftp_close($ftp_conn);
 
-print_r(array_keys($_REQUEST));
-print_r($_FILES);
-echo $_FILES['selectedFile']['name'];
 
 ?>
