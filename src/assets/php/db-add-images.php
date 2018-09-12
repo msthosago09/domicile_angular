@@ -12,8 +12,8 @@ $filePath = $_FILES["photos"]["tmp_name"];
 
 echo "name " . $fileName;
 echo "path " . $filePath;
-
-if (ftp_put($ftp_conn, "ftp_files/".$fileName, $filePath, FTP_ASCII))
+//ftp_chdir($ftp_conn, "/home/domicile/etc/";
+if (ftp_put($ftp_conn, "/".$fileName, $filePath, FTP_BINARY))
 {
   echo "Successfully uploaded";
 }
@@ -23,6 +23,5 @@ else
 }
 
 ftp_close($ftp_conn);
-
 
 ?>
