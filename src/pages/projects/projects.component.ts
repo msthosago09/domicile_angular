@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {DbService} from '../../providers/db.service';
 import {Subscription} from 'rxjs';
-import * as $ from 'jquery';
+import {ProjectObject} from '../../domain/project-object';
+import {ProjectImageObject} from '../../domain/project-image-object';
+import {ProjectDetailsObject} from '../../domain/project-details-object';
 
 @Component({
   selector: 'app-projects',
@@ -12,13 +14,40 @@ import * as $ from 'jquery';
 export class ProjectsComponent implements OnInit {
 
   private projectsSubscription: Subscription;
+  private imageSubscription: Subscription;
+  public completeProjectArray: ProjectDetailsObject[] = [];
 
   constructor(private http: HttpClient, private db: DbService) {
   }
 
   ngOnInit() {
-    this.projectsSubscription = this.db.getProjects().subscribe((queryResult) => {
-      console.log(queryResult);
+    // show loader
+    let projectObjectArray = [];
+    let projectImageArray = [];
+    this.projectsSubscription = this.db.getProjects().subscribe((queryResult: ProjectObject[]) => {
+      projectObjectArray = queryResult;
+      this.imageSubscription = this.db.getProjectImages().subscribe((queryResult2: ProjectImageObject[]) => {
+        projectImageArray = queryResult2;
+        this.processPage(projectImageArray, projectObjectArray);
+      });
     });
+  }
+
+  private processPage(images: ProjectImageObject[], projects: ProjectObject[]) {
+    // dismiss loader after completion
+    if (images.length !== 0 && projects.length !== 0) {
+      for (const singleProject of projects) {
+        const pdo = new ProjectDetailsObject();
+        pdo.selectedProject = singleProject;
+        pdo.projectPictures = [];
+        for (const singleImage of images) {
+          if (singleImage.PROJECT_ID === singleProject.ID) {
+            pdo.projectPictures.push(singleImage.IMAGE_LINK);
+          }
+        }
+         this.completeProjectArray.push(pdo);
+      }
+    }
+    console.log(this.completeProjectArray);
   }
 }

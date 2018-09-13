@@ -3,7 +3,6 @@ import {ProjectObject} from '../../domain/project-object';
 import {DbService} from '../../providers/db.service';
 import * as $ from 'jquery';
 import {HttpClient} from '@angular/common/http';
-import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-admin',
@@ -14,11 +13,11 @@ export class AdminComponent {
   private tmpProject: ProjectObject;
   public projectTitle = '';
   public projectDescription = '';
-  file;
 
   constructor(private db: DbService, private http: HttpClient) {
   }
 
+  // TODO: Remove so theres only one submit button for projects
   submitProject() {
     if (this.projectTitle !== '' && this.projectDescription !== '') {
       this.tmpProject = new ProjectObject();
@@ -52,9 +51,11 @@ export class AdminComponent {
 
   onFileChanged(event) {
     const formData = new FormData();
-    Array.from(event.target.files).forEach((file: File) => formData.append('photos[]', file, file.name));
-    console.log('changed');
-    console.log(formData.get('photos[]'));
+    Array.from(event.target.files).forEach((file: File) => {
+      formData.append('photos[]', file, file.name);
+      formData.append('projectId', this.tmpProject.ID.toString());
+    });
+
     const request = $.ajax({
       url: '/assets/php/db-add-images.php',
       type: 'post',

@@ -12,5 +12,9 @@ export class DbService {
     console.log('get projects');
     return this._http.get('/assets/php/db-fetch-projects.php');
   }
-  //add images
+
+  getProjectImages(): Observable<any> {
+    console.log('get project pics');
+    return this._http.get('/assets/php/db-fetch-project-images.php');
+  }
 }
