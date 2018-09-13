@@ -52,9 +52,9 @@ export class AdminComponent {
 
   onFileChanged(event) {
     const formData = new FormData();
-    Array.from(event.target.files).forEach((file: File) => formData.append('photos', file, file.name));
+    Array.from(event.target.files).forEach((file: File) => formData.append('photos[]', file, file.name));
     console.log('changed');
-    console.log(formData.get('photos'));
+    console.log(formData.get('photos[]'));
     const request = $.ajax({
       url: '/assets/php/db-add-images.php',
       type: 'post',
