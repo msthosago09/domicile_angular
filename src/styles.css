@@ -2,3 +2,9 @@
 *{
   font-family:  'Alegreya Sans';
 }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

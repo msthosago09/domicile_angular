@@ -29,6 +29,7 @@ export class ProjectsComponent implements OnInit {
       this.imageSubscription = this.db.getProjectImages().subscribe((queryResult2: ProjectImageObject[]) => {
         projectImageArray = queryResult2;
         this.processPage(projectImageArray, projectObjectArray);
+        // hide loader
       });
     });
   }
@@ -45,7 +46,7 @@ export class ProjectsComponent implements OnInit {
             pdo.projectPictures.push(singleImage.IMAGE_LINK);
           }
         }
-         this.completeProjectArray.push(pdo);
+        this.completeProjectArray.push(pdo);
       }
     }
     console.log(this.completeProjectArray);
