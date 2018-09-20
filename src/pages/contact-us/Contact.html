@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body>
-  <h1>Contact</h1>
+<h1>Contact Details</h1>
+<div>
+  <p>Lebogang Sepeng</p>
+  <p>Phone: 011 701 5056</p>
+  <p>Mobile: 083 547 3307</p>
+  <p>Email address: lebogang@domicilegroup.co.za</p>
+</div>
+<h1>Email Us</h1>
+<form>
+  Name:<br>
+  <input type="text" [(ngModel)]="sender" name="sender" required><br>
+  Subject:<br>
+  <input type="text" [(ngModel)]="subject" name="subject" required><br/>
+  Email:<br>
+  <input type="text" [(ngModel)]="email" name="email" required><br/>
+  Message:<br>
+  <textarea rows="4" cols="50" [(ngModel)]="message" required></textarea><br/>
+  <button type="button" (click)="submitEmail()" class="btn btn-success">Submit</button>
+</form>
 </body>
 </html>

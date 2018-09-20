@@ -34,7 +34,7 @@ export class AdminComponent {
         data: msg
       });
 
-      request.done(function (response, textStatus, jqXHR) {
+      request.done(function (response) {
         console.log(response);
       });
     }
@@ -64,7 +64,7 @@ export class AdminComponent {
       data: formData
     });
 
-    request.done(function (response, textStatus, jqXHR) {
+    request.done(function (response) {
       console.log(response);
     });
   }

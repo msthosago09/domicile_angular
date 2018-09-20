@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +8,19 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AppComponent {
   title = 'Domicile Group';
 
-  constructor(private _router: Router) {
+  constructor() {
   }
 
-  openProjects() {
-    this._router.navigate(['/Projects']);
+  @HostListener('window:scroll', ['$event'])
+  doScroll($event) {
+    console.log('scroll');
+    const navbar = document.getElementById('navbar');
+    const sticky = navbar.offsetTop;
+    console.log(sticky);
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add('sticky');
+    } else {
+      navbar.classList.remove('sticky');
+    }
   }
 }
