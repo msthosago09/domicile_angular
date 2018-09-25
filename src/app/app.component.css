@@ -1,6 +1,5 @@
 
 .header {
-  /*background-color: #f1f1f1;*/
   padding: 30px;
   text-align: center;
 }
@@ -21,21 +20,6 @@
 }
 
 #navbar a:hover {
-  background-color: #ddd;
+  background-color: white;
   color: black;
-}
-
-.content {
-  padding: 19px;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-/*This means .content that comes after sticky class*/
-.sticky + .content {
-  padding-top: 60px;
 }

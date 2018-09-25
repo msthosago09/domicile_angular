@@ -1,12 +1,8 @@
-.picture-carousel{
-  height: 84px;
-  background-color: cornflowerblue;
+.carousel slide{
+  height: 384px;
 }
 
-.sticky + .content {
-  padding-top: 60px;
-}
-
-.content {
-  padding: 19px;
+img {
+  height: 384px;
+  width: 100%;
 }

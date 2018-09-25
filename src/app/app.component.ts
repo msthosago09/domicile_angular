@@ -11,7 +11,7 @@ export class AppComponent {
   constructor() {
   }
 
-  @HostListener('window:scroll', ['$event'])
+/*  @HostListener('window:scroll', ['$event'])
   doScroll($event) {
     console.log('scroll');
     const navbar = document.getElementById('navbar');
@@ -21,5 +21,5 @@ export class AppComponent {
     } else {
       navbar.classList.remove('sticky');
     }
-  }
+  }*/
 }
