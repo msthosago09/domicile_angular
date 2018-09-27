@@ -5,13 +5,15 @@
   <title>Title</title>
 </head>
 <body>
-<div class="loader"></div>
+<!--<div class="loader"></div>-->
 <h1>Projects</h1>
-<div class="card" style="width: 18rem;" *ngFor="let pj of completeProjectArray">
-  <img class="card-img-top" src="/assets/img/{{pj.projectPictures[0]}}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
+<div class="card-columns">
+  <div class="card border-primary mb-3" *ngFor="let pj of completeProjectArray" style="max-width: 26rem;">
+    <img class="card-img-top" src="/assets/img/{{pj.projectPictures[0]}}" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title">{{pj.selectedProject.TITLE}}
+      </h4>
+    </div>
   </div>
 </div>
 </body>

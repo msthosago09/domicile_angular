@@ -15,6 +15,8 @@ import {DbService} from '../providers/db.service';
 import {AdminComponent} from '../pages/admin-portal/admin.component';
 import {AdminModule} from '../pages/admin-portal/Admin.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AboutModule} from '../pages/about-us/about.module';
+import {AboutComponent} from '../pages/about-us/about.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HomeModule,
     ContactModule,
     ServicesModule,
+    AboutModule,
     AdminModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -39,6 +42,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
       {
         path: 'home',
         component: HomeComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       },
       {
         path: 'contact',
