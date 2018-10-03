@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {ProjectObject} from '../../domain/project-object';
 import {ProjectImageObject} from '../../domain/project-image-object';
 import {ProjectDetailsObject} from '../../domain/project-details-object';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -17,7 +18,7 @@ export class ProjectsComponent implements OnInit {
   private imageSubscription: Subscription;
   public completeProjectArray: ProjectDetailsObject[] = [];
 
-  constructor(private http: HttpClient, private db: DbService) {
+  constructor(private http: HttpClient, private db: DbService, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,6 +35,15 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
+  public openProject(selectedPdo: number) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        'projId': selectedPdo
+      }
+    };
+    this.router.navigate(['project-details'], navigationExtras);
+  }
+
   private processPage(images: ProjectImageObject[], projects: ProjectObject[]) {
     // dismiss loader after completion
     if (images.length !== 0 && projects.length !== 0) {
@@ -47,6 +57,7 @@ export class ProjectsComponent implements OnInit {
           }
         }
         this.completeProjectArray.push(pdo);
+        this.db.setProjectArray(this.completeProjectArray);
       }
     }
     console.log(this.completeProjectArray);

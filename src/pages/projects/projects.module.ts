@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ProjectsComponent} from './projects.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -8,7 +9,8 @@ import {ProjectsComponent} from './projects.component';
     ProjectsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [ProjectsComponent]

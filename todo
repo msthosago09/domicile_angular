@@ -9,7 +9,7 @@ Galleries should be scrollable
 *index.php file is read first by xampp
 
 Pages:
-     Home; About; Projects;Services;Contact
+     Home; About; Projects;Services;Contact; Media
 
 Links to project pictures will be /assets/project_pictures/"picture name"
 

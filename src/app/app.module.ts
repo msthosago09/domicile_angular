@@ -17,6 +17,9 @@ import {AdminModule} from '../pages/admin-portal/Admin.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AboutModule} from '../pages/about-us/about.module';
 import {AboutComponent} from '../pages/about-us/about.component';
+import {MediaModule} from '../pages/media/media.module';
+import {ProjectDetailsModule} from '../pages/project-details/project-details.module';
+import {ProjectDetailsComponent} from '../pages/project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import {AboutComponent} from '../pages/about-us/about.component';
     ServicesModule,
     AboutModule,
     AdminModule,
+    MediaModule,
+    ProjectDetailsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
@@ -58,6 +63,10 @@ import {AboutComponent} from '../pages/about-us/about.component';
       {
         path: 'admin',
         component: AdminComponent
+      },
+      {
+        path: 'project-details',
+        component: ProjectDetailsComponent
       }
     ])
   ],
