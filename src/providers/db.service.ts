@@ -32,6 +32,5 @@ export class DbService {
       }
     }
     console.log('call failed');
-    // return null;
   }
 }

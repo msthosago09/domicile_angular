@@ -6,9 +6,13 @@
 </head>
 <body>
 <!--<div class="loader"></div>-->
-<h1>Projects</h1>
+<div id="myNav" class="overlay" background="../../assets/img/domicile_logo_2.jpeg">
+  <div class="overlay-content">
+    <h1>Projects</h1>
+  </div>
+</div>
 <div class="card-columns">
-  <div  class="card border-secondary mb-3" *ngFor="let pj of completeProjectArray" style="max-width: 26rem;">
+  <div class="card border-primary mb-3" *ngFor="let pj of completeProjectArray" style="max-width: 26rem;">
     <!--TODO: Change url to 'project_pictures' not 'img'-->
     <a (click)="openProject(pj.selectedProject.ID)">
       <img class="card-img-top" src="/assets/img/{{pj.projectPictures[0]}}" alt="Card image cap">

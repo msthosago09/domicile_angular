@@ -6,27 +6,41 @@
 </head>
 <body>
 <div class="content">
-  <div>
-    <h2>Add Project</h2>
-    <form>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input [(ngModel)]="projectTitle" type="text" class="form-control" id="title" name="title" required>
-      </div>
+  <div class="card-columns">
+    <div class="card border-primary mb-3" style="max-width: 60rem;">
+      <div class="card-header"><h2>Add Project</h2></div>
+      <div class="card-body">
+        <div class="card-text">
+          <form>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input [(ngModel)]="projectTitle" type="text" class="form-control" id="title" name="title">
+            </div>
 
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input [(ngModel)]="projectDescription" type="text" class="form-control" id="description" name="description"
-               required>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea [(ngModel)]="projectDescription" rows="5" cols="34" class="form-control" id="description" name="description"></textarea>
+            </div>
+            <button [disabled]="projectCreated" type="button" (click)="submitProject()" class="btn btn-success">Submit</button>
+          </form>
+        </div>
       </div>
-      <button type="button" (click)="submitProject()" class="btn btn-success">Submit</button>
-    </form>
+    </div>
+    <div *ngIf="projectCreated" class="card border-primary mb-3" style="max-width: 40rem;">
+      <div class="card-header"><h2>Add Project Images</h2></div>
+      <div class="card-body">
+        <form>
+          <input class="btn btn-info" name="selectedFile" id="selectedFile" #selectedFile multiple (change)="onFileChanged($event)" type="file"/>
+          <br/>
+          <button type="button" (click)="sendImagesToServer()" class="btn btn-info">Upload</button>
+        </form>
+      </div>
+    </div>
   </div>
   <br/>
-  <form>
-    <input name="selectedFile" id="selectedFile" multiple (change)="onFileChanged($event)" type="file"
-           placeholder="upload a file"/>
-  </form>
+  <div class="alert alert-success" role="alert" *ngIf="projectSubmitted">
+    Project successfully added!
+  </div>
 </div>
 </body>
 </html>

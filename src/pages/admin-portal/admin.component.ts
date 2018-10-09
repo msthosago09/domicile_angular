@@ -13,6 +13,9 @@ export class AdminComponent {
   private tmpProject: ProjectObject;
   public projectTitle = '';
   public projectDescription = '';
+  private fd: FormData;
+  public projectCreated = false;
+  public projectSubmitted = false;
 
   constructor(private db: DbService, private http: HttpClient) {
   }
@@ -33,8 +36,9 @@ export class AdminComponent {
         type: 'post',
         data: msg
       });
-
+      const that = this;
       request.done(function (response) {
+        that.projectCreated = true;
         console.log(response);
       });
     }
@@ -55,18 +59,24 @@ export class AdminComponent {
       formData.append('photos[]', file, file.name);
       formData.append('projectId', this.tmpProject.ID.toString());
     });
+    this.fd = formData;
+  }
 
-    const request = $.ajax({
-      url: '/assets/php/db-add-images.php',
-      type: 'post',
-      processData: false,
-      contentType: false,
-      data: formData
-    });
-
-    request.done(function (response) {
-      console.log(response);
-    });
+  sendImagesToServer() {
+    if (this.fd !== null) {
+      const request = $.ajax({
+        url: '/assets/php/db-add-images.php',
+        type: 'post',
+        processData: false,
+        contentType: false,
+        data: this.fd
+      });
+      const that = this;
+      request.done(function (response) {
+        that.projectSubmitted = true;
+        console.log(response);
+      });
+    }
   }
 }
 
