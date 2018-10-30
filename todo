@@ -15,7 +15,11 @@ Links to project pictures will be /assets/project_pictures/"picture name"
 
 
 admin links
-  -view project
+  -view projects
   -add project
   -view media
   -add media
+
+  TODO: Make navbar dropdown and complete admin links.
+
+

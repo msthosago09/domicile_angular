@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body>
-<div id="myNav" class="overlay" background="../../assets/img/domicile_logo_2.jpeg">
-  <div class="overlay-content">
-    <h1>Project Details</h1>
+  <h1>Project: (Project name)</h1>
+<p>
+
+</p>
+  <div class="comments-section">
+    <h1>Comments</h1>
+    <!--TODO: Here show all the current comments-->
+    <form>
+      <fieldset>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" [(ngModel)]="userName" class="form-control" id="name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+          <label for="comment">Commment</label>
+          <textarea class="form-control" id="comment" rows="4" cols="50" [(ngModel)]="userComment"></textarea>
+        </div>
+        <button type="button" (click)="submitComment()" class="btn btn-primary">Add Comment</button>
+      </fieldset>
+    </form>
   </div>
-</div></body>
+</body>
 </html>

@@ -1,4 +1,5 @@
 import {Component, HostListener} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,21 @@ import {Component, HostListener} from '@angular/core';
 })
 export class AppComponent {
   title = 'Domicile Group';
+  public accessCode = '';
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
+  accessAdmin() {
+    if (this.accessCode !== '') {
+      if (this.accessCode === '3487' || this.accessCode === '5920') {
+        this.router.navigate(['admin']);
+        this.accessCode = '';
+      }
+    }
+  }
+
+  close() {
+    this.accessCode = '';
+  }
 }

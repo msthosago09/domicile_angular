@@ -7,4 +7,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: myFirstFont;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(assets/fonts/sawarabi-mincho/SawarabiMincho-Regular.ttf);
 }

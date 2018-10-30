@@ -1,17 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {ProjectDetailsComponent} from './project-details.component';
+import {AdminComponent} from './admin.component';
 import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    ProjectDetailsComponent
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
   providers: [],
-  bootstrap: [ProjectDetailsComponent]
+  bootstrap: [AdminComponent]
 })
-export class ProjectDetailsModule { }
+export class AdminModule { }
