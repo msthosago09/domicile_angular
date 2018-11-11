@@ -5,18 +5,27 @@
   <title>Title</title>
 </head>
 <body>
-<h1>Projects</h1>
-<div class="card-columns">
-  <div class="card border-primary mb-3" *ngFor="let pj of completeProjectArray" style="max-width: 26rem;">
-    <!--TODO: Change url to 'project_pictures' not 'img'-->
-    <a (click)="openProject(pj.selectedProject.ID)">
-      <img class="card-img-top" src="/assets/img/{{pj.projectPictures[0]}}" alt="Card image cap">
-    </a>
-    <div class="card-body">
-      <h4 class="card-title">{{pj.selectedProject.TITLE}}
-      </h4>
+<div class="content">
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-sm-8 text-left">
+        <h1>Projects</h1>
+      </div>
     </div>
+    <br/>
   </div>
 </div>
+  <div class="card-columns">
+    <div class="card border-primary mb-3" *ngFor="let pj of completeProjectArray" style="max-width: 26rem;">
+      <!--TODO: Change url to 'project_pictures' not 'img'. When deploying to server-->
+      <a (click)="openProject(pj.selectedProject.ID)">
+        <img class="card-img-top" src="/assets/img/{{pj.projectPictures[0]}}" alt="Card image cap">
+      </a>
+      <div class="card-body">
+        <h4 class="card-title">{{pj.selectedProject.TITLE}}
+        </h4>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,15 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProjectObject} from '../../domain/project-object';
 import {DbService} from '../../providers/db.service';
 import * as $ from 'jquery';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './Admin.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
   private tmpProject: ProjectObject;
   public projectTitle = '';
   public projectDescription = '';
@@ -17,7 +18,13 @@ export class AdminComponent {
   public projectCreated = false;
   public projectSubmitted = false;
 
-  constructor(private db: DbService, private http: HttpClient) {
+  constructor(private db: DbService, private http: HttpClient, private router: Router ) {
+  }
+
+  ngOnInit() {
+    if (localStorage.getItem('loggedIn') !== 'true') {
+      this.router.navigate(['home']);
+    }
   }
 
   submitProject() {

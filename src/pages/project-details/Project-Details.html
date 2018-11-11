@@ -5,25 +5,23 @@
   <title>Title</title>
 </head>
 <body>
-  <h1>Project: (Project name)</h1>
+  <strong><h1>Project: {{pdo.selectedProject.TITLE}}</h1></strong>
 <p>
-
+  <!--TODO: Masonry grid. Pics open overlay carousel when you click on them. Text underneath-->
 </p>
   <div class="comments-section">
     <h1>Comments</h1>
     <!--TODO: Here show all the current comments-->
     <form>
-      <fieldset>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" [(ngModel)]="userName" class="form-control" id="name" placeholder="Enter name">
+          <input type="text" [(ngModel)]="userName" class="form-control" id="name" placeholder="Type name">
         </div>
         <div class="form-group">
           <label for="comment">Commment</label>
-          <textarea class="form-control" id="comment" rows="4" cols="50" [(ngModel)]="userComment"></textarea>
+          <textarea class="form-control" id="comment" rows="4" cols="50" [(ngModel)]="userComment" placeholder="Type comment here"></textarea>
         </div>
-        <button type="button" (click)="submitComment()" class="btn btn-primary">Add Comment</button>
-      </fieldset>
+        <button type="button" (click)="addComment()" class="btn btn-primary">Add Comment</button>
     </form>
   </div>
 </body>

@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
-import {ProjectObject} from '../../domain/project-object';
-import {DbService} from '../../providers/db.service';
 import * as $ from 'jquery';
 import {HttpClient} from '@angular/common/http';
+import {ProjectObject} from '../../../domain/project-object';
+import {DbService} from '../../../providers/db.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './Admin.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-manage-projects',
+  templateUrl: './Manage Projects.html',
+  styleUrls: ['./manage-projects.component.css']
 })
-export class AdminComponent {
+export class ManageProjectsComponent {
   private tmpProject: ProjectObject;
   public projectTitle = '';
   public projectDescription = '';
@@ -40,6 +40,11 @@ export class AdminComponent {
         console.log(response);
       });
     }
+  }
+
+  cancelProject() {
+    this.projectTitle = '';
+    this.projectDescription = '';
   }
 
   private makeid() {

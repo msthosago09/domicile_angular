@@ -5,9 +5,32 @@
   <title>Title</title>
 </head>
 <body>
-<div id="myNav" class="overlay" background="../../assets/img/domicile_logo_2.jpeg">
-  <div class="overlay-content">
-    <h1>Media</h1>
+<div class="content">
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-sm-8 text-left">
+        <h1>Media</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-group" style="list-style-type:none">
+          <li *ngIf="linkCount > 0" class="list-group-item list-group-item-dark">Web links</li>
+          <li *ngFor="let obj of linkObjects">
+            <a href="{{obj.URL}}" class="list-group-item list-group-item-action">
+              {{obj.TITLE}}
+            </a>
+          </li>
+          <li *ngIf="docCount > 0" class="list-group-item list-group-item-dark">Documents</li>
+          <li *ngFor="let obj of docObjects">
+            <a href="/assets/documents/{{obj.URL}}" class="list-group-item list-group-item-action">
+              {{obj.TITLE}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br/>
   </div>
 </div>
 </body>

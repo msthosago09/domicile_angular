@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 *{
-  font-family:  'Alegreya Sans';
+  font-family:  smallText;
 }
 
 html,
-body {
+body, .content{
   margin: 0;
   padding: 0;
   font-family: myFirstFont;
@@ -12,5 +12,15 @@ body {
 
 @font-face {
   font-family: myFirstFont;
-  src: url(assets/fonts/sawarabi-mincho/SawarabiMincho-Regular.ttf);
+  src: url(assets/fonts/SawarabiMincho-Regular.ttf);
 }
+
+@font-face {
+  font-family: smallText;
+  src: url(assets/fonts/corbel.ttf);
+}
+
+/*html{
+  overflow: scroll;
+}*/
+

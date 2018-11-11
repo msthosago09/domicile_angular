@@ -11,6 +11,21 @@ export class DbService {
   constructor(private _http: HttpClient) {
   }
 
+  getComments(): Observable<any> {
+    console.log('get comments');
+    return this._http.get('/assets/php/db-fetch-comments.php');
+  }
+
+  getLinks(): Observable<any> {
+    console.log('get link');
+    return this._http.get('/assets/php/db-fetch-links.php');
+  }
+
+  getDocuments(): Observable<any> {
+    console.log('get documents');
+    return this._http.get('/assets/php/db-fetch-docs.php');
+  }
+
   getProjects(): Observable<any> {
     console.log('get projects');
     return this._http.get('/assets/php/db-fetch-projects.php');

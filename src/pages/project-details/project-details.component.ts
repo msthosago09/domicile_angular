@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {DbService} from '../../providers/db.service';
 import * as $ from 'jquery';
 import {ProjectCommentObject} from '../../domain/project-comment-object';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-project-details',
@@ -16,25 +17,30 @@ export class ProjectDetailsComponent implements OnInit {
   public userComment = '';
   pdo: ProjectDetailsObject;
   id: number;
+  public commentSubscription: Subscription;
+  public projComments: ProjectCommentObject[] = [];
 
   constructor(private route: ActivatedRoute, private db: DbService) {
     this.route.queryParams.subscribe(params => {
       this.id = params['projId'];
+      this.pdo = this.db.getSelectedProject(this.id);
+      console.log(this.pdo);
     });
   }
 
   ngOnInit() {
-    this.pdo = this.db.getSelectedProject(this.id);
-    console.log(this.pdo);
+    this.commentSubscription = this.db.getComments().subscribe((commentResults: ProjectCommentObject[]) => {
+      this.projComments = commentResults;
+    });
   }
 
-  addComment(name, comment) {
+  addComment() {
     const tmpComment = new ProjectCommentObject();
-    tmpComment.COMMENTOR_NAME = name;
-    tmpComment.COMMENT = comment;
+    tmpComment.COMMENTOR_NAME = this.userName;
+    tmpComment.COMMENT = this.userComment;
     tmpComment.PROJECT_ID = this.id;
     const request = $.ajax({
-      url: '/assets/php/db-add-project.php',
+      url: '/assets/php/db-add-comment.php',
       type: 'post',
       data: tmpComment
     });

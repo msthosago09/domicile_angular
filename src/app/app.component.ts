@@ -1,5 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {Router} from '@angular/router';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-root',
@@ -16,10 +18,12 @@ export class AppComponent {
   accessAdmin() {
     if (this.accessCode !== '') {
       if (this.accessCode === '3487' || this.accessCode === '5920') {
+        localStorage.setItem('loggedIn', 'true');
         this.router.navigate(['admin']);
         this.accessCode = '';
       }
     }
+
   }
 
   close() {

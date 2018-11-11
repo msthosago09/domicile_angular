@@ -20,6 +20,10 @@ import {AboutComponent} from '../pages/about-us/about.component';
 import {MediaModule} from '../pages/media/media.module';
 import {ProjectDetailsModule} from '../pages/project-details/project-details.module';
 import {ProjectDetailsComponent} from '../pages/project-details/project-details.component';
+import {ManageLinksComponent} from '../pages/admin-portal/manage-links/manage-links.component';
+import {ManageProjectsComponent} from '../pages/admin-portal/manage-projects/manage-projects.component';
+import {ManageDocumentsComponent} from '../pages/admin-portal/manage-documents/manage-documents.component';
+import {MediaComponent} from '../pages/media/media.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,7 @@ import {ProjectDetailsComponent} from '../pages/project-details/project-details.
     MediaModule,
     ProjectDetailsModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      {path: '', redirectTo: '/home', pathMatch: 'full'},
       {
         path: 'projects',
         component: ProjectsComponent
@@ -61,8 +65,24 @@ import {ProjectDetailsComponent} from '../pages/project-details/project-details.
         component: ServicesComponent
       },
       {
+        path: 'media',
+        component: MediaComponent
+      },
+      {
         path: 'admin',
-        component: AdminComponent
+        component: AdminComponent,
+        children: [{
+          path: 'manage-links',
+          component: ManageLinksComponent,
+        },
+          {
+            path: 'manage-projects',
+            component: ManageProjectsComponent
+          },
+          {
+            path: 'manage-docs',
+            component: ManageDocumentsComponent
+          }]
       },
       {
         path: 'project-details',
@@ -73,4 +93,5 @@ import {ProjectDetailsComponent} from '../pages/project-details/project-details.
   providers: [DbService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
