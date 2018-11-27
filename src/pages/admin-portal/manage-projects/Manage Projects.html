@@ -9,12 +9,33 @@
   <div class="container-fluid ">
     <div class="row">
       <div class="col-sm-8 text-left">
-        <h1>Manage Projects</h1>
+        <h1><strong>Manage Projects</strong></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-group" style="list-style-type:none">
+          <li class="list-group-item list-group-item-dark">Current projects(click to delete)</li>
+          <li>
+            <a data-toggle="modal" *ngFor="let obj of projObjects" (click)="selectProject(obj.TITLE,obj.ID)"
+               class="list-group-item list-group-item-action" data-target="#projModal">
+              {{obj.TITLE}}
+            </a>
+          </li>
+          <li *ngIf="projObjects.length == 0">
+            <a class="list-group-item list-group-item-action">
+              No links
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 text-left">
+        <h1><strong>New Project</strong></h1>
       </div>
     </div>
   </div>
-</div>
-<div class="content">
   <div class="card-columns">
     <div class="card border-primary mb-3" style="max-width: 60rem;">
       <div class="card-header"><h2>Add Project</h2></div>
@@ -52,9 +73,34 @@
     </div>
   </div>
   <br/>
-  <div class="alert alert-success" role="alert" *ngIf="projectSubmitted">
-    Project successfully added!
+</div>
+<div class="modal fade" id="projModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirm delete</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal"  (click)="deleteProject()">Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
+</div>
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  Project added!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  Project deleted!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 </body>
 </html>

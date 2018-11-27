@@ -7,9 +7,14 @@ import {ProjectDetailsObject} from '../domain/project-details-object';
 export class DbService {
 
   public sharedProjectArray: ProjectDetailsObject[];
+  public sharedDocToDelete: string;
+  public sharedProjectToDelete: string;
+  public sharedLinkToDelete: string;
+  public sharedProjectID: string;
 
   constructor(private _http: HttpClient) {
   }
+
 
   getComments(): Observable<any> {
     console.log('get comments');

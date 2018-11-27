@@ -11,29 +11,6 @@
   <a routerLink="/services">Services</a>
   <a routerLink="/media">Media</a>
   <a routerLink="/contact">Contact</a>
-  <!-- move admin link to bottom of the page -->
-  <a style="float: right" data-toggle="modal" data-target="#myModal">Admin</a>
-</div>
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Enter access code</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <input name="text" type="text" [(ngModel)]="accessCode" class="form-control" id="accessC">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="accessAdmin()">Login</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="close()">Close</button>
-      </div>
-    </div>
-
-  </div>
 </div>
 
 <router-outlet></router-outlet>

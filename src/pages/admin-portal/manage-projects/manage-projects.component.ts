@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import * as $ from 'jquery';
-import {HttpClient} from '@angular/common/http';
 import {ProjectObject} from '../../../domain/project-object';
 import {DbService} from '../../../providers/db.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-manage-projects',
@@ -16,8 +16,14 @@ export class ManageProjectsComponent {
   private fd: FormData;
   public projectCreated = false;
   public projectSubmitted = false;
+  private projectDeleted: boolean;
+  private projectsSubscription: Subscription;
+  public projObjects: ProjectObject[] = [];
 
-  constructor(private db: DbService, private http: HttpClient) {
+  constructor(private db: DbService) {
+    this.projectsSubscription = this.db.getProjects().subscribe((queryResult: ProjectObject[]) => {
+      this.projObjects = queryResult;
+    });
   }
 
   submitProject() {
@@ -81,5 +87,32 @@ export class ManageProjectsComponent {
       });
     }
   }
+
+  deleteProject() {
+    const formData = new FormData();
+    formData.append('projID', this.db.sharedProjectID);
+    formData.append('projTitle', this.db.sharedProjectToDelete);
+    if (formData !== null) {
+      const request = $.ajax({
+        url: '/assets/php/db-delete-project.php',
+        type: 'post',
+        processData: false,
+        contentType: false,
+        data: formData
+      });
+      const that = this;
+      request.done(function (response) {
+        that.projectDeleted = true;
+        console.log(response);
+      });
+    }
+  }
+
+  selectProject(title, id) {
+    this.db.sharedProjectToDelete = title;
+    this.db.sharedProjectID = id;
+    console.log('SelecteDDD: ' + id);
+  }
+
 }
 

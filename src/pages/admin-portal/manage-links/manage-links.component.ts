@@ -18,6 +18,7 @@ export class ManageLinksComponent {
   public linkCount = 0;
   private linkSubscription;
   public linkObjects: ProjectLinkObject[] = [];
+  private linkDeleted: boolean;
 
   constructor(private db: DbService) {
     this.linkSubscription = this.db.getLinks().subscribe((links: ProjectLinkObject[]) => {
@@ -29,6 +30,30 @@ export class ManageLinksComponent {
 
   cancelLink() {
 
+  }
+
+  deleteLink() {
+    const formData = new FormData();
+    formData.append('linkTitle',  this.db.sharedDocToDelete);
+    if (formData !== null) {
+      const request = $.ajax({
+        url: '/assets/php/db-delete-weblink.php',
+        type: 'post',
+        processData: false,
+        contentType: false,
+        data: formData
+      });
+      const that = this;
+      request.done(function (response) {
+        that.linkDeleted = true;
+        console.log(response);
+      });
+    }
+  }
+
+  selectLink(id) {
+    this.db.sharedDocToDelete = id;
+    console.log('SelecteDDD: ' + id);
   }
 
   submitLink() {

@@ -9,32 +9,34 @@
   <div class="container-fluid ">
     <div class="row">
       <div class="col-sm-8 text-left">
-        <h1>Manage Documents</h1>
+        <h1><strong>Manage Documents</strong></h1>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
         <ul class="list-group" style="list-style-type:none">
-          <!--          <li *ngIf="docCount > 0" class="list-group-item list-group-item-dark">Current documents</li>
-                    <li *ngFor="let obj of docObjects">
-                      <a href="/assets/documents/{{obj.URL}}" class="list-group-item list-group-item-action">
-                        {{obj.TITLE}}
-                      </a>
-                      <button style="float: right; position: absolute" type="button" class="btn btn-success">Delete</button>&emsp;
-                    </li>-->
-          <li class="list-group-item list-group-item-dark">Current documents</li>
+          <li class="list-group-item list-group-item-dark">Current documents(click to delete)</li>
           <li>
-            <a href="/assets/documents/{{obj.URL}}" class="list-group-item list-group-item-action">
-              DOCUMENT NAME
+            <a data-toggle="modal" *ngFor="let obj of docObjects" (click)="selectDoc(obj.TITLE)"
+               class="list-group-item list-group-item-action" data-target="#docModal">
+              {{obj.TITLE}}
             </a>
-            <span class="badge">Delete</span>
+          </li>
+          <li *ngIf="docObjects.length == 0">
+            <a class="list-group-item list-group-item-action">
+              No links
+            </a>
           </li>
         </ul>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-8 text-left">
+        <h1><strong>New Document</strong></h1>
+      </div>
+    </div>
   </div>
 </div>
-<!--
 <div class="card-columns">
   <div class="card border-primary mb-3" style="max-width: 60rem;">
     <div class="card-header"><h2>Add Document</h2></div>
@@ -57,6 +59,32 @@
     </div>
   </div>
 </div>
--->
+<div class="modal fade" id="docModal" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirm delete</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteDoc()">Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="alert alert-info alert-dismissible fade" role="alert">
+  Document added!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="alert alert-danger alert-dismissible fade" role="alert">
+  Document deleted!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 </body>
 </html>

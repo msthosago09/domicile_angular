@@ -3,7 +3,7 @@
 }
 
 img {
-  height: 410px;
+  height: 480px;
   width: 100%;
 }
 
@@ -15,4 +15,25 @@ img {
 #demo{
   margin: 0;
   padding: 0;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #2C3E50;
+}
+
+#navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  color: #1f76b0;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+#navbar a:hover {
+  background-color: #4e5367;
+  color: #2C3E50;
 }

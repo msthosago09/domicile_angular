@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import * as $ from 'jquery';
 import {DbService} from '../../../providers/db.service';
 import {ProjectDocumentObject} from '../../../domain/project-document-object';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class ManageDocumentsComponent {
   public documentDescription = '';
   private fd: FormData;
   public docSubmitted: boolean;
-  private docSubscription;
+  public docDeleted: boolean;
+  private docSubscription: Subscription;
   public docObjects: ProjectDocumentObject[] = [];
   public docCount = 0;
 
@@ -29,12 +31,36 @@ export class ManageDocumentsComponent {
 
   }
 
+  deleteDoc() {
+    this.fd = new FormData();
+    this.fd.append('docTitle',  this.db.sharedDocToDelete);
+    if (this.fd !== null) {
+      const request = $.ajax({
+        url: '/assets/php/db-delete-document.php',
+        type: 'post',
+        processData: false,
+        contentType: false,
+        data: this.fd
+      });
+      const that = this;
+      request.done(function (response) {
+        that.docDeleted = true;
+        console.log(response);
+      });
+    }
+    this.fd = new FormData();
+  }
+
+  selectDoc(id) {
+    this.db.sharedDocToDelete = id;
+    console.log('SelecteDDD: ' + id);
+  }
+
   onFileChanged(event) {
-    const formData = new FormData();
+    this.fd = new FormData();
     Array.from(event.target.files).forEach((file: File) => {
-      formData.append('documents[]', file, file.name);
+      this.fd.append('documents[]', file, file.name);
     });
-    this.fd = formData;
   }
 
   sendDocumentToServer() {
