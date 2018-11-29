@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "DELETE FROM project_objects WHERE TITLE = '" . $projTitle ."''";
+$sql = "DELETE FROM project_objects WHERE TITLE = '" . $projTitle ."'";
 
 if ($conn->query($sql) === TRUE) {
   echo "Success";
@@ -29,9 +29,9 @@ $login = ftp_login($ftp_conn, $ftp_username, $ftp_userpass);
 $projId = $_POST["projID"];
 
 $getListSql = "SELECT * FROM project_images WHERE PROJECT_ID = '". $projId."'";
-while($row = $getListSql->fetch_assoc()) {
+$result = $conn->query($getListSql);
+while($row = $result->fetch_assoc()) {
   if (ftp_delete($ftp_conn, "public_html/assets/project_images/" . $row["IMAGE_LINK"])) {
-    echo "$file deleted";
 
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
@@ -47,7 +47,6 @@ while($row = $getListSql->fetch_assoc()) {
 
     $conn->close();
   } else {
-    echo "Could not delete $file";
   }
 }
 

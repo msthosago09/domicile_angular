@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import {ProjectsComponent} from './projects.component';
 import {RouterModule} from '@angular/router';
 
-
 @NgModule({
   declarations: [
     ProjectsComponent

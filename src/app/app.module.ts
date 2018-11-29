@@ -24,6 +24,8 @@ import {ManageLinksComponent} from '../pages/admin-portal/manage-links/manage-li
 import {ManageProjectsComponent} from '../pages/admin-portal/manage-projects/manage-projects.component';
 import {ManageDocumentsComponent} from '../pages/admin-portal/manage-documents/manage-documents.component';
 import {MediaComponent} from '../pages/media/media.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import {MediaComponent} from '../pages/media/media.component';
     AboutModule,
     AdminModule,
     MediaModule,
+    BrowserAnimationsModule,
     ProjectDetailsModule,
     RouterModule.forRoot([
       {path: '', redirectTo: '/home', pathMatch: 'full'},

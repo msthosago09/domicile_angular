@@ -6,6 +6,8 @@ import {ProjectObject} from '../../domain/project-object';
 import {ProjectImageObject} from '../../domain/project-image-object';
 import {ProjectDetailsObject} from '../../domain/project-details-object';
 import {NavigationExtras, Router} from '@angular/router';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-projects',

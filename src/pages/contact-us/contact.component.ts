@@ -19,7 +19,7 @@ export class ContactComponent {
     console.log('submitting');
     console.log(this.sender);
     if (this.sender !== '' && this.email !== '' && this.subject !== '' && this.message !== '') {
-      const msg = {sender: this.sender, email: this.email, subject: this.subject, message: this.message};
+      const msg = {name: this.sender, email: this.email, subject: this.subject, message: this.message};
       const request = $.ajax({
         url: '/assets/php/send-email.php',
         type: 'post',

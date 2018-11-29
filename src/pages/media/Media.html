@@ -18,7 +18,7 @@
           <li class="list-group-item list-group-item-dark">Documents</li>
           <li>
             <a href="/public_html/assets/documents/{{obj.URL}}" *ngFor="let obj of docObjects" class="list-group-item list-group-item-action">
-              {{obj.TITLE}}
+              <strong>{{obj.TITLE}}</strong> {{obj.Description}}
             </a>
           </li>
           <li *ngIf="docObjects.length == 0">
@@ -30,7 +30,7 @@
           <li class="list-group-item list-group-item-dark">Links</li>
           <li>
             <a href="{{obj.URL}}" *ngFor="let obj of linkObjects" class="list-group-item list-group-item-action">
-              {{obj.TITLE}}
+              <strong>{{obj.TITLE}}</strong>
             </a>
           </li>
           <li *ngIf="linkObjects.length == 0">

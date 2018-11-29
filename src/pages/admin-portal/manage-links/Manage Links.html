@@ -9,7 +9,7 @@
   <div class="container-fluid ">
     <div class="row">
       <div class="col-sm-8 text-left">
-        <h1><strong>Manage Documents</strong></h1>
+        <h1><strong>Manage Links</strong></h1>
       </div>
     </div>
     <div class="row">
@@ -35,25 +35,31 @@
         <h1><strong>New Link</strong></h1>
       </div>
     </div>
-  </div>
-  <div class="card-columns">
-    <div class="card border-primary mb-3" style="max-width: 60rem;">
-      <div class="card-header"><h2>Add Link</h2></div>
-      <div class="card-body">
-        <div class="card-text">
-          <form>
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input [(ngModel)]="linkTitle" type="text" class="form-control" id="title" name="title" placeholder="Title">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card-columns">
+          <div class="card border-primary mb-3" style="max-width: 60rem;">
+            <div class="card-header"><h2>Add Link</h2></div>
+            <div class="card-body">
+              <div class="card-text">
+                <form>
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <input [(ngModel)]="linkTitle" type="text" class="form-control" id="title" name="title"
+                           placeholder="Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Link</label>
+                    <textarea placeholder="Type full link here. e.g: https://www.domicilegroup.co.za"
+                              [(ngModel)]="linkUrl"
+                              rows="5" cols="34" class="form-control" id="description" name="description"></textarea>
+                  </div>
+                  <button type="button" (click)="submitLink()" class="btn btn-success">Submit</button>&emsp;
+                  <button type="button" (click)="cancelLink()" class="btn btn-success">Cancel</button>
+                </form>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="description">Link</label>
-              <textarea placeholder="Type full link here. e.g: https://www.domicilegroup.co.za" [(ngModel)]="linkUrl"
-                        rows="5" cols="34" class="form-control" id="description" name="description"></textarea>
-            </div>
-            <button type="button" (click)="submitLink()" class="btn btn-success">Submit</button>&emsp;
-            <button type="button" (click)="cancelLink()" class="btn btn-success">Cancel</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
