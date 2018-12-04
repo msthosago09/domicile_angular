@@ -5,24 +5,41 @@
   <title>Title</title>
 </head>
 <body>
-  <h1><strong>Project:</strong> {{pdo.selectedProject.TITLE}}</h1>
-<p>
-  <!--TODO: Masonry grid. Pics open overlay carousel when you click on them. Text underneath-->
-</p>
-  <div class="comments-section">
-    <h1>Comments</h1>
-    <!--TODO: Here show all the current comments-->
-    <form>
+<div id="myNav" class="overlay">
+  <div class="overlay-content">
+    <h1>Services</h1>
+    We offer the following specialist OHSE management services:
+    <ul>
+      <li>Ensuring health and safety legislative compliance</li>
+      <li>Project specific health and safety files</li>
+      <li>Health and safety policy drafting</li>
+      <li>Hazard identification and risk assessment (HIRA)</li>
+      <li>Safety, health and environmental management programme (SHEMP) implementation</li>
+      <li>Workplace inspection</li>
+      <li>OHS specification (for every project)</li>
+      <li>Approve contactor(s) SHE plan and risk management plan</li>
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <h1><strong>Project:</strong> Mall of the North</h1>
+
+  <!--  <div class="comments-section">
+      <h1>Comments</h1>
+      &lt;!&ndash;TODO: Here show all the current comments&ndash;&gt;
+      <form>
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" [(ngModel)]="userName" class="form-control" id="name" placeholder="Type name">
         </div>
         <div class="form-group">
           <label for="comment">Commment</label>
-          <textarea class="form-control" id="comment" rows="4" cols="50" [(ngModel)]="userComment" placeholder="Type comment here"></textarea>
+          <textarea class="form-control" id="comment" rows="4" cols="50" [(ngModel)]="userComment"
+                    placeholder="Type comment here"></textarea>
         </div>
         <button type="button" (click)="addComment()" class="btn btn-primary">Add Comment</button>
-    </form>
-  </div>
+      </form>
+    </div>-->
+</div>
 </body>
 </html>

@@ -23,6 +23,11 @@ export class ProjectsComponent implements OnInit {
   constructor(private http: HttpClient, private db: DbService, private router: Router) {
   }
 
+  openDetails(){
+    this.router.navigate(['project-details']);
+
+  }
+
   ngOnInit() {
     // show loader
     let projectObjectArray = [];
