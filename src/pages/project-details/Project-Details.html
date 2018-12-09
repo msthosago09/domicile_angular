@@ -5,41 +5,77 @@
   <title>Title</title>
 </head>
 <body>
-<div id="myNav" class="overlay">
-  <div class="overlay-content">
-    <h1>Services</h1>
-    We offer the following specialist OHSE management services:
-    <ul>
-      <li>Ensuring health and safety legislative compliance</li>
-      <li>Project specific health and safety files</li>
-      <li>Health and safety policy drafting</li>
-      <li>Hazard identification and risk assessment (HIRA)</li>
-      <li>Safety, health and environmental management programme (SHEMP) implementation</li>
-      <li>Workplace inspection</li>
-      <li>OHS specification (for every project)</li>
-      <li>Approve contactor(s) SHE plan and risk management plan</li>
-    </ul>
-  </div>
-</div>
 <div class="content">
-  <h1><strong>Project:</strong> Mall of the North</h1>
-
-  <!--  <div class="comments-section">
-      <h1>Comments</h1>
-      &lt;!&ndash;TODO: Here show all the current comments&ndash;&gt;
+  <h1><strong>Project:</strong> {{pdo.selectedProject.TITLE}}</h1>
+  <br>
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-sm-8">
+        <p>
+          {{pdo.selectedProject.DESCRIPTION}}
+        </p>
+      </div>
+      <div class="col-sm-3 text-center">
+        <div class="card-columns">
+          <div class="card border-primary mb-2" style="width: 25rem;" (click)="openImageCarousel()">
+            <a>
+              <img style="height: 150px; " class="card-img-top" src="/../../assets/project_pictures/{{pdo.projectPictures[0]}}"
+                   alt="Card image cap"
+                   (click)="openImageCarousel()">
+            </a>
+            <div class="card-body">
+              <h4 class="card-title">Open image gallery
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+ <div class="comments-section">
+   <h1><strong>Comments</strong></h1>
+  TODO: Here show all the current comments
       <form>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" [(ngModel)]="userName" class="form-control" id="name" placeholder="Type name">
-        </div>
-        <div class="form-group">
-          <label for="comment">Commment</label>
-          <textarea class="form-control" id="comment" rows="4" cols="50" [(ngModel)]="userComment"
-                    placeholder="Type comment here"></textarea>
-        </div>
-        <button type="button" (click)="addComment()" class="btn btn-primary">Add Comment</button>
-      </form>
-    </div>-->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" [(ngModel)]="userName" class="form-control" id="name" placeholder="Type name">
+            </div>
+            <div class="form-group">
+              <label for="comment">Commment</label>
+              <textarea class="form-control" id="comment" rows="4" cols="50" [(ngModel)]="userComment"
+                        placeholder="Type comment here"></textarea>
+            </div>
+            <button type="button" (click)="addComment()" class="btn btn-primary">Add Comment</button>
+          </form>
+  </div>  -->
+</div>
+<div id="overlay" class="overlay">
+  <div class="text-right"> <img (click)="closeImageCarousel()" src="../../assets/project_pictures/error.svg" style="width: 40px; height: 40px;">
+  </div>
+  <div id="demo" class="carousel slide " data-ride="carousel" data-interval="1500">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" *ngFor="let idx = index;" data-slide-to="idx" [class.active]="idx == 0" class="active"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let idx = index; let imgObject of pdo.projectPictures" [class.active]="idx == 0">
+        <img src="../../assets/project_pictures/{{imgObject}}" alt="Los Angeles" >
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+
+  </div>
 </div>
 </body>
 </html>

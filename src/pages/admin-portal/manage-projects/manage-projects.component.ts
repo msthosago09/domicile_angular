@@ -83,6 +83,7 @@ export class ManageProjectsComponent {
       const that = this;
       request.done(function (response) {
         that.projectSubmitted = true;
+        alert('Project added.');
         console.log(response);
       });
     }
@@ -103,6 +104,8 @@ export class ManageProjectsComponent {
       const that = this;
       request.done(function (response) {
         that.projectDeleted = true;
+        document.getElementById('projDelAlert').style.visibility = 'visible';
+        alert('Project deleted.');
         console.log(response);
       });
     }

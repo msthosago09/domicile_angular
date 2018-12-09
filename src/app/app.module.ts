@@ -24,7 +24,7 @@ import {ManageLinksComponent} from '../pages/admin-portal/manage-links/manage-li
 import {ManageProjectsComponent} from '../pages/admin-portal/manage-projects/manage-projects.component';
 import {ManageDocumentsComponent} from '../pages/admin-portal/manage-documents/manage-documents.component';
 import {MediaComponent} from '../pages/media/media.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 @NgModule({
@@ -56,7 +56,7 @@ import 'hammerjs';
         component: HomeComponent
       },
       {
-        path: 'about',
+        path: 'about-us',
         component: AboutComponent
       },
       {
@@ -90,7 +90,8 @@ import 'hammerjs';
       {
         path: 'project-details',
         component: ProjectDetailsComponent
-      }
+      },
+      { path: '**', component: HomeComponent }
     ])
   ],
   providers: [DbService],

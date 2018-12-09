@@ -27,6 +27,7 @@ export class ContactComponent {
       });
 
       request.done(function (response) {
+        alert('Email sent.');
         console.log(response);
       });
     }

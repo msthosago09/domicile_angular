@@ -12,7 +12,6 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./project-details.component.css']
 })
 export class ProjectDetailsComponent implements OnInit {
-
   public userName = '';
   public userComment = '';
   pdo: ProjectDetailsObject;
@@ -21,6 +20,7 @@ export class ProjectDetailsComponent implements OnInit {
   public projComments: ProjectCommentObject[] = [];
 
   constructor(private route: ActivatedRoute, private db: DbService) {
+
     this.route.queryParams.subscribe(params => {
       this.id = params['projId'];
       this.pdo = this.db.getSelectedProject(this.id);
@@ -32,6 +32,14 @@ export class ProjectDetailsComponent implements OnInit {
     this.commentSubscription = this.db.getComments().subscribe((commentResults: ProjectCommentObject[]) => {
       this.projComments = commentResults;
     });
+  }
+
+  openImageCarousel() {
+    document.getElementById('overlay').style.display = 'block';
+  }
+
+  closeImageCarousel() {
+    document.getElementById('overlay').style.display = 'none';
   }
 
   addComment() {
@@ -46,6 +54,7 @@ export class ProjectDetailsComponent implements OnInit {
     });
     const that = this;
     request.done(function (response) {
+      alert('Comment added');
       console.log(response);
     });
   }

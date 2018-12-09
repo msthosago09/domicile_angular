@@ -31,7 +31,7 @@ $projId = $_POST["projID"];
 $getListSql = "SELECT * FROM project_images WHERE PROJECT_ID = '". $projId."'";
 $result = $conn->query($getListSql);
 while($row = $result->fetch_assoc()) {
-  if (ftp_delete($ftp_conn, "public_html/assets/project_images/" . $row["IMAGE_LINK"])) {
+  if (ftp_delete($ftp_conn, "public_html/assets/project_pictures/" . $row["IMAGE_LINK"])) {
 
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);

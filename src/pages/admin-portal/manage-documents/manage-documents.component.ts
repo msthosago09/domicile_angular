@@ -45,6 +45,7 @@ export class ManageDocumentsComponent {
       const that = this;
       request.done(function (response) {
         that.docDeleted = true;
+        alert('Document deleted.')
         console.log(response);
       });
     }
@@ -77,6 +78,7 @@ export class ManageDocumentsComponent {
       const that = this;
       request.done(function (response) {
         that.docSubmitted = true;
+        alert('Document added.')
         console.log(response);
       });
     }

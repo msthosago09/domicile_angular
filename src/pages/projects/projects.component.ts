@@ -23,11 +23,6 @@ export class ProjectsComponent implements OnInit {
   constructor(private http: HttpClient, private db: DbService, private router: Router) {
   }
 
-  openDetails(){
-    this.router.navigate(['project-details']);
-
-  }
-
   ngOnInit() {
     // show loader
     let projectObjectArray = [];
@@ -65,6 +60,8 @@ export class ProjectsComponent implements OnInit {
         }
         this.completeProjectArray.push(pdo);
         this.db.setProjectArray(this.completeProjectArray);
+        // document.getElementById('projSpinner').style.display = 'none';
+        // document.getElementById('projCards').style.display = 'block';
       }
     }
     console.log(this.completeProjectArray);

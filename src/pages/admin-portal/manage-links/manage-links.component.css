@@ -2,3 +2,7 @@ body{
   margin-left: 40px;
   margin-top: 40px;
 }
+
+a{
+  cursor: pointer;
+}

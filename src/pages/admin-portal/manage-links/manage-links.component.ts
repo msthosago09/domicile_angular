@@ -46,6 +46,7 @@ export class ManageLinksComponent {
       const that = this;
       request.done(function (response) {
         that.linkDeleted = true;
+        alert('Link deleted.');
         console.log(response);
       });
     }
@@ -68,6 +69,7 @@ export class ManageLinksComponent {
       const that = this;
       request.done(function (response) {
         that.linkCreated = true;
+        alert('Link added.');
         console.log(response);
       });
     }

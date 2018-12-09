@@ -2,3 +2,24 @@ body{
   margin-left: 40px;
   margin-top: 40px;
 }
+
+#navbar {
+  overflow: hidden;
+  width: 100%;
+  background-color: #2C3E50;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: white;
+  color: #2C3E50;
+}

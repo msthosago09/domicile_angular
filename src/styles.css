@@ -1,24 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 *{
-  font-family:  smallText;
+  font-family: 'Noto Serif TC', serif;
 }
 
 html,
 body, .content{
   margin: 0;
   padding: 0;
-  font-family: myFirstFont;
+  font-family: 'Corben', cursive;
 }
 
-@font-face {
+/*@font-face {
   font-family: myFirstFont;
-  src: url(assets/fonts/SawarabiMincho-Regular.ttf);
+  src: url(/assets/fonts/SawarabiMincho-Regular.ttf);
 }
 
 @font-face {
   font-family: smallText;
-  src: url(assets/fonts/corbel.ttf);
-}
+  src: url(/assets/fonts/corbel.ttf);
+}*/
 
 /*html{
   overflow: scroll;
