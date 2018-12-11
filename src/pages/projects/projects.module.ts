@@ -1,19 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {ProjectsComponent} from './projects.component';
+import {ProjectsComponent, ProjectsSpinnerComponent} from './projects.component';
 import {RouterModule} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
-    ProjectsComponent
+    ProjectsComponent,
+    ProjectsSpinnerComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
+    OverlayModule,
     MatProgressSpinnerModule
   ],
   providers: [],
-  bootstrap: [ProjectsComponent]
+  bootstrap: [ProjectsComponent],
+  entryComponents: [ProjectsSpinnerComponent]
 })
 export class ProjectsModule { }
